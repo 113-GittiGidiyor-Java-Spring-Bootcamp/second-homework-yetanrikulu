@@ -1,4 +1,5 @@
 package com.example.hw2.model;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.time.LocalDate;
