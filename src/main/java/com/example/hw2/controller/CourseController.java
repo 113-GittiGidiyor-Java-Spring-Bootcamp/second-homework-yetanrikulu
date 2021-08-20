@@ -19,12 +19,12 @@ public class CourseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Course>> findAll(){
+    public ResponseEntity<List<Course>> findAll() {
         return new ResponseEntity<>(courseService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Course> findById(@PathVariable int id){
+    public ResponseEntity<Course> findById(@PathVariable int id) {
         return new ResponseEntity<>(courseService.findById(id), HttpStatus.OK);
     }
 
@@ -34,17 +34,17 @@ public class CourseController {
     }
 
     @PatchMapping
-    public ResponseEntity<Course> update(@RequestBody Course course){
-        return new ResponseEntity<>(courseService.update(course),HttpStatus.OK);
+    public ResponseEntity<Course> update(@RequestBody Course course) {
+        return new ResponseEntity<>(courseService.update(course), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable int id){
+    public void deleteById(@PathVariable int id) {
         courseService.deleteById(id);
     }
 
     @DeleteMapping
-    public void deleteByObject(@RequestBody Course course){
+    public void deleteByObject(@RequestBody Course course) {
         courseService.deleteByObject(course);
     }
 

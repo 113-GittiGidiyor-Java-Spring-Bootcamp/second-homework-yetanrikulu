@@ -33,7 +33,7 @@ public class CourseDAOJPAImpl implements CourseDAO<Course> {
     }
 
     @Override
-    @Transactional //*******************************************//
+    @Transactional
     public void deleteById(int id) {
         entityManager.remove(findById(id));
     }

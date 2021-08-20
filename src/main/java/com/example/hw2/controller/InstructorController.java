@@ -1,6 +1,8 @@
 package com.example.hw2.controller;
 
 import com.example.hw2.model.Instructor;
+import com.example.hw2.model.PermanentInstructor;
+import com.example.hw2.model.VisitingResearcher;
 import com.example.hw2.service.InstructorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,32 +21,45 @@ public class InstructorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Instructor>> findAll(){
+    public ResponseEntity<List<Instructor>> findAll() {
         return new ResponseEntity<>(instructorService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Instructor> findById(@PathVariable int id){
+    public ResponseEntity<Instructor> findById(@PathVariable int id) {
         return new ResponseEntity<>(instructorService.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Instructor> save(@RequestBody Instructor instructor) {
+    @PostMapping("/permanentInstructor")
+    public ResponseEntity<Instructor> save(@RequestBody PermanentInstructor instructor) {
         return new ResponseEntity<>(instructorService.save(instructor), HttpStatus.CREATED);
     }
 
-    @PatchMapping
-    public ResponseEntity<Instructor> update(@RequestBody Instructor instructor){
-        return new ResponseEntity<>(instructorService.update(instructor),HttpStatus.OK);
+    @PostMapping("/visitingResearcher")
+    public ResponseEntity<Instructor> save(@RequestBody VisitingResearcher instructor) {
+        return new ResponseEntity<>(instructorService.save(instructor), HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/permanentInstructor")
+    public ResponseEntity<Instructor> update(@RequestBody PermanentInstructor instructor) {
+        return new ResponseEntity<>(instructorService.update(instructor), HttpStatus.OK);
+    }
+    @PatchMapping("/visitingResearcher")
+    public ResponseEntity<Instructor> update(@RequestBody VisitingResearcher instructor) {
+        return new ResponseEntity<>(instructorService.update(instructor), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable int id){
+    public void deleteById(@PathVariable int id) {
         instructorService.deleteById(id);
     }
 
-    @DeleteMapping
-    public void deleteByObject(@RequestBody Instructor instructor){
+    @DeleteMapping("/permanentInstructor")
+    public void deleteByObject(@RequestBody PermanentInstructor instructor) {
+        instructorService.deleteByObject(instructor);
+    }
+    @DeleteMapping("/visitingResearcher")
+    public void deleteByObject(@RequestBody VisitingResearcher instructor) {
         instructorService.deleteByObject(instructor);
     }
 }

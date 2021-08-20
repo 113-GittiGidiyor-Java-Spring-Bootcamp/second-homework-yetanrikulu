@@ -1,10 +1,10 @@
 package com.example.hw2.dao;
 
-import com.example.hw2.model.Course;
 import com.example.hw2.model.Instructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -27,11 +27,13 @@ public class InstructorDAOJPAImpl implements InstructorDAO<Instructor> {
     }
 
     @Override
+    @Transactional
     public Instructor save(Instructor instructor) {
         return entityManager.merge(instructor);
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
         entityManager.remove(findById(id));
     }

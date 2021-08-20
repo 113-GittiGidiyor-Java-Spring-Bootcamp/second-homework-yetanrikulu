@@ -24,7 +24,6 @@ public abstract class Instructor extends Person {
 
     }
 
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
