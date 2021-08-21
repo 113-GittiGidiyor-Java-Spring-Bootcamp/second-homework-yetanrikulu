@@ -1,5 +1,8 @@
 package com.example.hw2.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -9,6 +12,13 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = PermanentInstructor.class, name = "PermanentInstructor"),
+        @JsonSubTypes.Type(value = VisitingResearcher.class, name = "VisitingResearcher")
+})
 public abstract class Instructor extends Person {
     private String phoneNumber;
 

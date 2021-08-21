@@ -30,22 +30,12 @@ public class InstructorController {
         return new ResponseEntity<>(instructorService.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/permanentInstructor")
-    public ResponseEntity<Instructor> save(@RequestBody PermanentInstructor instructor) {
+    @PostMapping
+    public ResponseEntity<Instructor> save(@RequestBody Instructor instructor){
         return new ResponseEntity<>(instructorService.save(instructor), HttpStatus.CREATED);
     }
-
-    @PostMapping("/visitingResearcher")
-    public ResponseEntity<Instructor> save(@RequestBody VisitingResearcher instructor) {
-        return new ResponseEntity<>(instructorService.save(instructor), HttpStatus.CREATED);
-    }
-
-    @PatchMapping("/permanentInstructor")
-    public ResponseEntity<Instructor> update(@RequestBody PermanentInstructor instructor) {
-        return new ResponseEntity<>(instructorService.update(instructor), HttpStatus.OK);
-    }
-    @PatchMapping("/visitingResearcher")
-    public ResponseEntity<Instructor> update(@RequestBody VisitingResearcher instructor) {
+    @PutMapping
+    public ResponseEntity<Instructor> update(@RequestBody Instructor instructor) {
         return new ResponseEntity<>(instructorService.update(instructor), HttpStatus.OK);
     }
 
@@ -54,12 +44,8 @@ public class InstructorController {
         instructorService.deleteById(id);
     }
 
-    @DeleteMapping("/permanentInstructor")
-    public void deleteByObject(@RequestBody PermanentInstructor instructor) {
-        instructorService.deleteByObject(instructor);
-    }
-    @DeleteMapping("/visitingResearcher")
-    public void deleteByObject(@RequestBody VisitingResearcher instructor) {
+    @DeleteMapping
+    public void deleteByObject(@RequestBody Instructor instructor){
         instructorService.deleteByObject(instructor);
     }
 }

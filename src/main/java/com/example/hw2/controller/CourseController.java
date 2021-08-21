@@ -33,7 +33,7 @@ public class CourseController {
         return new ResponseEntity<>(courseService.save(course), HttpStatus.CREATED);
     }
 
-    @PatchMapping
+    @PutMapping
     public ResponseEntity<Course> update(@RequestBody Course course) {
         return new ResponseEntity<>(courseService.update(course), HttpStatus.OK);
     }

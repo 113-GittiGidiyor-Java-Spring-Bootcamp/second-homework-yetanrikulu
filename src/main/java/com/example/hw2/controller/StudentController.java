@@ -33,7 +33,7 @@ public class StudentController {
         return new ResponseEntity<>(studentService.save(student), HttpStatus.CREATED);
     }
 
-    @PatchMapping
+    @PutMapping
     public ResponseEntity<Student> update(@RequestBody Student student) {
         return new ResponseEntity<>(studentService.update(student), HttpStatus.OK);
     }
